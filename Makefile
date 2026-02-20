@@ -1,11 +1,13 @@
-all: clean cstring.out
+CC = gcc
+CFLAGS = -Wall -Wextra
+SRC = test.c
+TARGET = test.out
 
-cstring.out: cstring.o
-	cc $^ -o $@
+all: clean $(TARGET)
 
-cstring.o: cstring.c
-	cc -c $^ -o $@
+$(TARGET):
+	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 .PHONY: clean
 clean:
-	rm -f *.o *.so *.out
+	rm -f *.o *.out
